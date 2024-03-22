@@ -4,11 +4,15 @@ function Interests({ interests, theme }) {
   return (
     <div>
       <h4>Interests</h4>
-      <ul className={theme}>
-        {interests.map((interest) => (
-          <li key={interest}>{interest}</li>
-        ))}
-      </ul>
+      {interests && interests.length > 0 ? (
+        <ul className={theme}>
+          {interests.map((interest, index) => (
+            <li key={index}>{interest}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No interests to display.</p>
+      )}
     </div>
   );
 }

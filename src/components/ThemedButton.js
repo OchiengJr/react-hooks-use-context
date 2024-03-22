@@ -1,7 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function ThemedButton({ theme, ...props }) {
-  return <button className={theme} {...props} />;
+function ThemedButton({ buttonTheme = "", ...props }) {
+  return <button className={buttonTheme} {...props} />;
 }
+
+ThemedButton.propTypes = {
+  buttonTheme: PropTypes.string,
+};
 
 export default ThemedButton;

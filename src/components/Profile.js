@@ -1,16 +1,26 @@
-import React, {useContext} from "react";
-import {UserContext} from "../context/user"
+import React, { useContext } from "react";
+import { UserContext } from "../context/user";
 import Interests from "./Interests";
 
-function Profile({  theme }) {
-  const {user} = useContext(UserContext)
-  console.log(user)
+function Profile({ theme }) {
+  const { user } = useContext(UserContext);
 
-  if (!user) return <h2>Please Login To View Profile</h2>;
+  if (!user) {
+    // Display a more descriptive message or UI when the user is not logged in
+    return <h2>Please log in to view your profile.</h2>;
+  }
+
+  const { name, interests } = user;
+
   return (
     <div>
-      <h2>{user.name}'s Profile</h2>
-      <Interests interests={user.interests} theme={theme} />
+      <h2>{name}'s Profile</h2>
+      {/* Handle case when user interests are not defined or empty */}
+      {interests && interests.length > 0 ? (
+        <Interests interests={interests} theme={theme} />
+      ) : (
+        <p>No interests to display.</p>
+      )}
     </div>
   );
 }

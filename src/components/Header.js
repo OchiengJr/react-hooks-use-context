@@ -6,16 +6,16 @@ import { UserContext } from "../context/user";
 import { useTheme } from "../context/theme";
 
 function Header() {
-  const {user, setUser} = useContext(UserContext)
-  const {theme, setTheme} = useTheme()
+  const { user, setUser } = useContext(UserContext);
+  const { theme, setTheme } = useTheme();
 
-  function handleLogin() {
+  const handleLogin = () => {
     if (user) {
       setUser(null);
     } else {
       setUser(defaultUser);
     }
-  }
+  };
 
   return (
     <header>
